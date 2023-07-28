@@ -1,13 +1,27 @@
 from pathlib import Path
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+# Скопируйте DSN из вашего личного кабинета на Sentry: 
+# Settings → Projects → <ваш-проект> → Client Keys (DSN).
+sentry_sdk.init(
+    # В этой переменной будет значение для вашего проекта.
+    dsn="https://f9982da0bb9243389118fc8aa45d9c11@o4505607753236480.ingest.sentry.io/4505607761362944",
+    integrations=[
+        DjangoIntegration(),
+    ],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = 'django-insecure-j_89af+30&&4qm*8z9_(^zz8p4-ho8z_m6ylm0s$h!-p@on1_^'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['51.250.110.255', '127.0.0.1', 'localhost', 'yandextaskiplatform.serveirc.com']
 
 
 # Application definition
@@ -103,7 +117,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static_backend'
+
+STATIC_ROOT = BASE_DIR / 'static_backend' 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
