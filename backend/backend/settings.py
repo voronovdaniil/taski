@@ -12,6 +12,7 @@ sentry_sdk.init(
     ],
     traces_sample_rate=1.0,
     send_default_pii=True
+)
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
